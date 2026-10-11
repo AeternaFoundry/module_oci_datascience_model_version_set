@@ -1,0 +1,32 @@
+variable "datascience_model_version_sets" {
+  description = <<EOT
+Map of datascience_model_version_sets, attributes below
+Required:
+    - compartment_id
+    - name
+    - project_id
+Optional:
+    - defined_tags
+    - description
+    - freeform_tags
+    - timeouts (block):
+        - create (optional)
+        - delete (optional)
+        - update (optional)
+EOT
+
+  type = map(object({
+    compartment_id = string
+    name           = string
+    project_id     = string
+    defined_tags   = optional(map(string))
+    description    = optional(string)
+    freeform_tags  = optional(map(string))
+    timeouts = optional(object({
+      create = optional(string)
+      delete = optional(string)
+      update = optional(string)
+    }))
+  }))
+}
+
